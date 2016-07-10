@@ -9,15 +9,14 @@ import org.springframework.web.servlet.ModelAndView;
  * Created by Denis on 09.07.2016.
  */
 @Controller
-public class HelloWorldController {
+public class AddDeleteBicycleController {
     private String message = "Hello world in SpringMVC webapp!";
 
-    @RequestMapping("/hello")
-    public ModelAndView showMessage(@RequestParam(value = "name", required = false, defaultValue = "World") String name){
-        System.out.println("in HelloWorldController");
-        ModelAndView view = new ModelAndView("helloworld");
-        view.addObject("message", message);
-        view.addObject("name", name);
+    @RequestMapping("/addordeletebicycle")
+    public ModelAndView showMessage(@RequestParam(value = "edit", required = false, defaultValue = "0") String edit){
+        System.out.println("in AddDeleteBicycleController");
+        ModelAndView view = new ModelAndView("addordeletebicycle");
+        view.addObject("edit", edit);
         return view;
     }
 }

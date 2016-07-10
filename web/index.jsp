@@ -25,7 +25,7 @@
 
 <menu>
 
-    <div class="menuelement"><a href="viewbicycle">- fined bicycle</a></div>
+    <div class="menuelement"><a href="viewbicycle">- search bicycle</a></div>
     <div class="menuelement"><a href="addordeletebicycle?edit=0">- add new bicycle to DB</a></div>
     <div class="menuelement"><a href="addordeletebicycle?edit=1">- remove bicycle from DB</a></div>
     <div class="menuelement"><a href="hello">- test Controller</a></div>
