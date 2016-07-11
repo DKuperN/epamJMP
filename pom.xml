@@ -6,39 +6,21 @@
 
     <groupId>epamMentoringProgram</groupId>
     <artifactId>jmp</artifactId>
-    <packaging>war</packaging>
     <version>1</version>
+    <packaging>pom</packaging>
+    <name>jmp</name>
+
+    <modules>
+        <module>appcore</module>
+        <module>view</module>
+        <module>web</module>
+    </modules>
+
 
     <properties>
         <java-version>1.8</java-version>
         <spring.ver>4.3.1.RELEASE</spring.ver>
     </properties>
-
-    <dependencies>
-        <dependency>
-            <groupId>javax.persistence</groupId>
-            <artifactId>persistence-api</artifactId>
-            <version>1.0.2</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>${spring.ver}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${spring.ver}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>${spring.ver}</version>
-        </dependency>
-
-    </dependencies>
-
 
     <build>
         <plugins>
@@ -50,14 +32,40 @@
                     <target>${java-version}</target>
                 </configuration>
             </plugin>
-            <plugin>
 
-            <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
                 <configuration>
-                    <webXml>web\WEB-INF\web.xml</webXml>
+                    <outputDirectory>../bin</outputDirectory>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                        </manifest>
+                    </archive>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.10</version>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <includeScope>compile</includeScope>
+                            <outputDirectory>../bin/lib</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
 </project>
