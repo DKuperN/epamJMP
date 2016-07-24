@@ -1,8 +1,6 @@
 package by.core.dao.impl;
 
-import by.core.catalogs.BicycleClass;
-import by.core.catalogs.Materials;
-import by.core.dao.BicycleDAO;
+import by.core.dao.IBicycleDAO;
 import by.core.models.BicycleModel;
 
 import javax.sql.DataSource;
@@ -14,14 +12,13 @@ import java.util.List;
  * Created by Denis on 09.07.2016.
  */
 
-public class BicycleDaoImpl implements BicycleDAO {
+public class BicycleDaoImpl extends BaseBicycleDaoImpl<BicycleModel> implements IBicycleDAO {
 
     private DataSource dataSource;
 
     public void saveBicycle(BicycleModel bicycleModel) {
         final String SQL_SAVE_NEW_EVENT = "INSERT INTO BICYCLE (bicycle_id, producerName, wheelQuantity, wheelSize, releaseYear, bicycleClass, frameMaterials) VALUES (?,?,?,?,?,?,?)";
         HashMap<Integer, Object> map = new HashMap<Integer, Object>();
-        map.put(1, bicycleModel.getBicycle_id());
         map.put(2, bicycleModel.getProducerName());
         map.put(3, bicycleModel.getWheelQuantity());
         map.put(4, bicycleModel.getWheelSize());
@@ -49,15 +46,7 @@ public class BicycleDaoImpl implements BicycleDAO {
             ps.setInt(1, bicycle_id);
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
-                bicycleModel = new BicycleModel(
-                        rs.getInt("bicycle_id"),
-                        rs.getString("producerName"),
-                        rs.getInt("wheelQuantity"),
-                        rs.getInt("wheelSize"),
-                        rs.getInt("releaseYear"),
-                        BicycleClass.valueOf(rs.getString("bicycleClass")),
-                        Materials.valueOf(rs.getString("frameMaterials"))
-                );
+                //TODO: save data in to model
             }
             ps.close();
             if (bicycleModel != null){
