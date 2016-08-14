@@ -12,6 +12,7 @@
 
     <modules>
         <module>appcore</module>
+        <module>classloader</module>
         <module>view</module>
         <module>web</module>
     </modules>
