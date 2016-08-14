@@ -10,12 +10,11 @@ import javax.persistence.Enumerated;
 /**
  * Created by Denis on 09.07.2016.
  *
- * Entity for bicycle
+ * BikeEntity for bicycle
  */
 @Entity
-public class BicycleModel {
+public class BicycleModel extends BikeEntity {
 
-    private int bicycle_id;
     private String producerName;
     private int wheelQuantity;
     private int wheelSize;
@@ -27,22 +26,13 @@ public class BicycleModel {
     @Enumerated(EnumType.STRING)
     private Materials frameMaterials;
 
-    public BicycleModel(int bicycle_id, String producerName, int wheelQuantity, int wheelSize, int releaseYear, BicycleClass bicycleClass, Materials frameMaterials) {
-        this.bicycle_id = bicycle_id;
+    public BicycleModel(String producerName, int wheelQuantity, int wheelSize, int releaseYear, BicycleClass bicycleClass, Materials frameMaterials) {
         this.producerName = producerName;
         this.wheelQuantity = wheelQuantity;
         this.wheelSize = wheelSize;
         this.releaseYear = releaseYear;
         this.bicycleClass = bicycleClass;
         this.frameMaterials = frameMaterials;
-    }
-
-    public int getBicycle_id() {
-        return bicycle_id;
-    }
-
-    public void setBicycle_id(int bicycle_id) {
-        this.bicycle_id = bicycle_id;
     }
 
     public String getProducerName() {
