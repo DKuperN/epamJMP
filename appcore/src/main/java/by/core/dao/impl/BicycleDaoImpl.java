@@ -2,6 +2,7 @@ package by.core.dao.impl;
 
 import by.core.dao.IBicycleDAO;
 import by.core.models.BicycleModel;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.sql.DataSource;
 import java.sql.*;
@@ -14,6 +15,7 @@ import java.util.List;
 
 public class BicycleDaoImpl extends BaseBicycleDaoImpl<BicycleModel> implements IBicycleDAO {
 
+    @Autowired
     private DataSource dataSource;
 
     public void saveBicycle(BicycleModel bicycleModel) {

@@ -2,6 +2,7 @@ package by.core.models;
 
 import by.core.catalogs.BicycleClass;
 import by.core.catalogs.Materials;
+import org.springframework.beans.factory.annotation.Required;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -25,6 +26,9 @@ public class BicycleModel extends BikeEntity {
 
     @Enumerated(EnumType.STRING)
     private Materials frameMaterials;
+
+    public BicycleModel() {
+    }
 
     public BicycleModel(String producerName, int wheelQuantity, int wheelSize, int releaseYear, BicycleClass bicycleClass, Materials frameMaterials) {
         this.producerName = producerName;
