@@ -1,13 +1,17 @@
 package by.core.multitrading;
 
 import by.core.servicie.BuildBicycle;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Random;
 
 /**
  * Created by Denis on 16.08.2016.
  */
+@Component
 public class BicycleFactory {
+    @Autowired
     private BuildBicycle buildBicycleService;
 
     public void setThreadCount(int threadCount) {
@@ -15,6 +19,9 @@ public class BicycleFactory {
     }
 
     private int threadCount = 1;
+
+    public BicycleFactory() {
+    }
 
     public BicycleFactory(BuildBicycle buildBicycleService) {
         this.buildBicycleService = buildBicycleService;

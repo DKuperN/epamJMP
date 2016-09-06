@@ -8,6 +8,6 @@
     <!--DAO-->
     <bean id="baseDao" class="by.core.dao.IBaseDAO" abstract="true"/>
 
-    <bean id="bicycleDAO" class="by.core.dao.impl.BicycleDaoImpl" abstract="true"/>
+    <bean id="bicycleDAO" class="by.core.dao.impl.BicycleDaoImpl"/>
 
 </beans>

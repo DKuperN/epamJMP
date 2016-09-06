@@ -6,6 +6,8 @@ import by.core.catalogs.Materials;
 import by.core.dao.impl.BicycleDaoImpl;
 import by.core.models.BicycleModel;
 
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.test.context.ContextConfiguration;
 
 import java.util.Random;
@@ -13,7 +15,7 @@ import java.util.Random;
 /**
  * Created by Denis on 16.08.2016.
  */
-@ContextConfiguration(classes = {AnnotationBeans.class})
+@Service
 public class BuildBicycle {
 
     private BicycleDaoImpl bicycleDao;

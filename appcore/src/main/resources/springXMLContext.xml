@@ -8,10 +8,10 @@
 
 
     <import resource="mysql-connection.xml"/>
-    <!--<import resource="dao.xml"/>-->
+    <import resource="dao.xml"/>
     <!--<import resource="utils.xml"/>-->
     <!--<import resource="menu-loader.xml"/>-->
-    <!--<context:property-placeholder location="classpath:app.properties"/>-->
+    <context:property-placeholder location="classpath:app.properties"/>
 
 
     <!--Services-->
@@ -19,11 +19,29 @@
         <constructor-arg ref="bicycleDAO"/>
     </bean>
 
-    <bean id="bicycleDAO" class="by.core.dao.impl.BicycleDaoImpl"/>
+    <!--arguments will tak from properties or other beans-->
+    <bean id="standartBycicle" class="by.core.servicie.StandartBicycle">
+        <constructor-arg index="0" ref="idGenerator"/>
+        <constructor-arg index="1" value="2"/>
+        <constructor-arg index="2" value="Aist"/>
+        <constructor-arg index="3" value="2016"/>
+        <constructor-arg index="4" value="steel"/>
+    </bean>
+    <bean id="tandemBycicle" class="by.core.servicie.TandemBicycle">
+        <constructor-arg index="0" ref="idGenerator"/>
+        <constructor-arg index="1" value="2"/>
+        <constructor-arg index="2" value="TandemFactory"/>
+        <constructor-arg index="3" value="2016"/>
+        <constructor-arg index="4" value="carbon"/>
+    </bean>
+
 
     <bean id="bicycleFactory" class="by.core.multitrading.BicycleFactory">
         <constructor-arg ref="bicycleService"/>
     </bean>
+
+    <!--Bean for generate id to db-->
+    <bean id="idGenerator" class="by.core.utils.IdGenerator"/>
 
 
 </beans>
